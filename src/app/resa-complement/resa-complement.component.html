@@ -1,0 +1,10 @@
+<p><a class="back" routerLink="/liste" >&#8617; Retour</a></p>
+<h2> Reservations associées</h2>
+<div class="card">
+  <ul id="liste" class="list-group list-group-flush">
+    <li *ngFor="let g of guestsAssocies" class="list-group-item" [class.list-group-item-success]="g.isCheckedIn()" >
+      <button type="button" [disabled]="g.isCheckedIn()" (click)="guestService.checkInGuest(g)" class="bouton-checkin btn-sm btn btn-success">Check-in</button> &nbsp;
+      <b>{{g.nom}}</b> {{g.prenom}}
+    </li>
+  </ul>
+</div>

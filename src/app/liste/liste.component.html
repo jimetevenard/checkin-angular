@@ -1,0 +1,16 @@
+<p>
+  <input class="form-control" (input)="filtrerListe($event.target.value)" type="text" placeholder="Rechercher dans la liste..." />
+</p>
+<div class="card">
+  <ul id="liste" class="list-group list-group-flush">
+    <li *ngFor="let g of displayedGuestsList" class="list-group-item" [class.list-group-item-success]="g.isCheckedIn()" >
+      <button type="button" [disabled]="g.isCheckedIn()" (click)="guestService.checkInGuest(g)" class="bouton-checkin btn-sm btn btn-success">✓</button> &nbsp;
+      <b>{{g.nom}}</b> {{g.prenom}}
+      <button routerLink="/resa-plus/{{g.id}}" type="button" class="bouton-resa-dev btn-sm btn btn-info">+</button>
+    </li>
+    <li class="list-group-item">
+        {{checkinService.tmpCountCheckins()}} personnes checked-in sur un total de {{allGuests.length}} &nbsp;&nbsp; 
+        <button routerLink="/reset" type="button" class="btn-sm btn btn-danger" >Réinitialiser les Check-ins</button>   
+    </li>
+  </ul>
+</div>
