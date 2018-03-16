@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Guest } from '../guest';
 import { GuestsService } from "../guests.service";
 
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-liste',

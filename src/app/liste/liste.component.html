@@ -6,7 +6,7 @@
     <li *ngFor="let g of displayedGuestsList" class="list-group-item" [class.list-group-item-success]="g.isCheckedIn()" >
       <button type="button" [disabled]="g.isCheckedIn()" (click)="g.checkIn()" class="bouton-checkin btn-sm btn btn-success">Check-in</button> &nbsp;
       <b>{{g.nom}}</b> {{g.prenom}}
-      <button type="button" class="bouton-resa-dev btn-sm btn btn-info">Résa+ &gt;&gt;</button>
+      <a routerLink="/resa-plus/{{g.id}}" type="button" class="bouton-resa-dev btn-sm btn btn-info">Résa+ &gt;&gt;</a>
     </li>
   </ul>
 </div>
