@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Guest } from "./guest";
+import { CheckinsService } from './checkins.service';
 
 @Injectable()
 export class GuestsService {
@@ -25,6 +26,11 @@ export class GuestsService {
     return of(this.guests.filter(g => g.mail == mail));
   }
 
+  checkInGuest(guest: Guest){
+    guest.checkIn();
+    this.checkinsService.setCheckedIn(guest.id);
+  }
+
   private eventuallyLoadGuests() {
     // MethodName Award
 
@@ -33,13 +39,18 @@ export class GuestsService {
         // TMP wrap json/objet typescript
 
         let g = new Guest(jsonGuest.nom, jsonGuest.prenom, jsonGuest.mail, jsonGuest.id, jsonGuest.checkins);
+        if((!g.isCheckedIn()) && this.checkinsService.isCheckedIn(g.id)){
+          g.checkins++;
+        }
         this.guests.push(g);
       });
     }
   }
 
 
-  constructor() { }
+  constructor(private checkinsService: CheckinsService) { 
+    
+  }
 
 }
 

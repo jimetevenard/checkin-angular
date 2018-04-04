@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ListeComponent } from './liste/liste.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { ResaComplementComponent } from './resa-complement/resa-complement.component';
+import { CheckinsService } from './checkins.service';
+import { WindowRefService } from './window-ref.service';
 
 
 @NgModule({
@@ -20,7 +22,7 @@ import { ResaComplementComponent } from './resa-complement/resa-complement.compo
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ GuestsService ],
+  providers: [ GuestsService, CheckinsService, WindowRefService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
