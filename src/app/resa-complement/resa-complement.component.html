@@ -1,4 +1,5 @@
-<h2>Reservations associées</h2>
+<p><a class="back" routerLink="/liste" >&#8617; Retour</a></p>
+<h2> Reservations associées</h2>
 <div class="card">
   <ul id="liste" class="list-group list-group-flush">
     <li *ngFor="let g of guestsAssocies" class="list-group-item" [class.list-group-item-success]="g.isCheckedIn()" >

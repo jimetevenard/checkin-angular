@@ -16,6 +16,7 @@ export class ListeComponent implements OnInit {
 
   filtrerListe(recherche: string){
     this.displayedGuestsList = this.allGuests.filter(guest => this.correspond(recherche,guest));
+    //alert('Vous avez tapé ' + recherche);
   }
   
 
@@ -42,7 +43,7 @@ export class ListeComponent implements OnInit {
   }
   
   private sansAccent(str): string {
-    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    return str.replace(/[\u0300-\u036f]/g, "");
   }
   
   private normStart(a, b): boolean {
