@@ -9,6 +9,10 @@ export class GuestsService {
 
   // DUR TEMPORAIRE !!
 
+  // TODO le futur
+  // * GuestService (cette classe) qui contien la liste en mémoire
+  // * un autre Service dédié HttpServiceProvider qui va chercher 
+
   private guests: Guest[] = [];
 
   getAllGuests(): Observable<Guest[]> {
@@ -31,6 +35,10 @@ export class GuestsService {
     this.checkinsService.setCheckedIn(guest.id);
   }
 
+  clearGuests(){
+    this.guests = [];
+  }
+
   private eventuallyLoadGuests() {
     // MethodName Award
 
@@ -49,7 +57,7 @@ export class GuestsService {
 
 
   constructor(private checkinsService: CheckinsService) { 
-    
+
   }
 
 }

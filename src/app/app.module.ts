@@ -10,13 +10,15 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ResaComplementComponent } from './resa-complement/resa-complement.component';
 import { CheckinsService } from './checkins.service';
 import { WindowRefService } from './window-ref.service';
+import { ResetCheckinsComponent } from './reset-checkins/reset-checkins.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListeComponent,
-    ResaComplementComponent
+    ResaComplementComponent,
+    ResetCheckinsComponent
   ],
   imports: [
     BrowserModule,
