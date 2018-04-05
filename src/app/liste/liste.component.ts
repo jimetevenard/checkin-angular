@@ -3,6 +3,7 @@ import { Guest } from '../guest';
 import { GuestsService } from "../guests.service";
 
 import { FormsModule } from '@angular/forms'; 
+import { CheckinsService } from '../checkins.service';
 
 @Component({
   selector: 'app-liste',
@@ -20,7 +21,7 @@ export class ListeComponent implements OnInit {
   }
   
 
-  constructor(private guestService: GuestsService) { }
+  constructor(private guestService: GuestsService, private checkinService: CheckinsService) { }
 
   loadGuests(): void {
 
