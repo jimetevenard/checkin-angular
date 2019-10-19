@@ -31,8 +31,13 @@ private filteredGuestList:Observable<Guest[]> = new Observable((observer) => {
 
 private filterdGuestObserver:Subscriber<Guest[]>;
 
-// WIP
-tmpGuestURL = 'assets/liste.json';
+/*
+  TODO
+  ====
+
+  Pas très propore mais bien pratique...
+  */
+tmpGuestURL = 'http://checkin-back.jimetevenard.com/checkin.php';
   
 fetchGuests(){
       return this.http.get(this.tmpGuestURL);
