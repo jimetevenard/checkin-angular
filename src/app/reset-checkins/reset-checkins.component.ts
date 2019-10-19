@@ -17,7 +17,6 @@ export class ResetCheckinsComponent implements OnInit {
 
   reset(){ 
     this.checkinsService.clearCheckins();
-    this.guestService.clearGuests();
     this.router.navigateByUrl('/liste');
   }
 
