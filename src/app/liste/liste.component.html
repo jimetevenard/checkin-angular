@@ -1,6 +1,13 @@
-<p>
-  <input class="form-control" (input)="filtrerListe($event.target.value)" type="text" placeholder="Rechercher dans la liste..." />
-</p>
+<div class="bloc-recherche">
+  <div class="input-group">
+      <input #recherche class="form-control" (input)="filtrerListe($event.target.value)" type="text" placeholder="Rechercher dans la liste..." />
+      <div class="input-group-append">
+          <div class="input-group-text">
+              <button (click)="clearRecherche()" type="button" class="btn btn btn-primary">✕</button>
+          </div>
+        </div>
+    </div>
+</div>
 <div class="card">
   <ul id="liste" class="list-group list-group-flush">
     <li *ngFor="let g of displayedGuestsList" class="list-group-item" [class.list-group-item-success]="g.isCheckedIn()" >

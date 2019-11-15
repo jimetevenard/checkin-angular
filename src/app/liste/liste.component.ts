@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Guest } from '../guest';
 import { GuestsService } from "../guests.service";
 
@@ -15,11 +15,16 @@ export class ListeComponent implements OnInit {
   allGuests: Guest[];
   displayedGuestsList: Guest[];
 
+  @ViewChild('recherche') inputRecherche;
+
+  clearRecherche(): void {
+    this.inputRecherche.nativeElement.value = '';
+    this.filtrerListe('');
+    this.inputRecherche.nativeElement.focus();
+  }
+
   filtrerListe(recherche: string){
-    // TODO-AMELIO : Ici, un timout pour ne pas jouer trop souvent le filtrage.
-    // TODO-AMELIO : Sur la partie HTML, ajouter un bouton pour sortir (d'un coup) de la recherche
     this.displayedGuestsList = this.allGuests.filter(guest => this.correspond(recherche,guest));
-    //alert('Vous avez tapé ' + recherche);
   }
   
 
@@ -40,18 +45,10 @@ export class ListeComponent implements OnInit {
   }
 
   private correspond(recherche, elementListe): boolean {
-    /*
-      TODO-AMELIO : Ne pas créer ces variables,
-      apeller normStrart directement dans l'expression ||
-      (Pour sortir du if le nom ne correspond pas.)
-      
-      Au fait, cette expression est elle compilée en "vrai if" pas TS ?
-      (le type de retour est un boolen (Si ca n'est pas le cas
-      il faudra écrire un if explicite pour que cette remarque fasse sens)
-    */
-    var nomOk = this.normStart(elementListe.nom, recherche);
-    var prenomOk = this.normStart(elementListe.prenom, recherche);
-    return nomOk || prenomOk;
+    if(this.normStart(elementListe.nom.substring(0,recherche.length), recherche)) return true;
+    if(this.normStart(elementListe.prenom.substring(0,recherche.length), recherche)) return true;
+
+    return false ;
   }
   
   private sansAccent(str): string {
@@ -61,11 +58,6 @@ export class ListeComponent implements OnInit {
   
   private normStart(a, b): boolean {
     // a starts whith b en ignorant accents et casse.
-    
-    /*
-      TODO-AMELIO : Subrtinguer a (comparé) à la longuer de b (recherche)
-      pour éviter de passer le RemoveAccent sur toute la chaine.
-    */
     return this.sansAccent(a.toLowerCase()).startsWith(this.sansAccent(b.toLowerCase()));
   }
 
