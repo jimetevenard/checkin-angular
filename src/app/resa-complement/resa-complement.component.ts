@@ -23,7 +23,7 @@ export class ResaComplementComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.guestService.getAssociatedGuests(+this.route.snapshot.paramMap.get('id')).subscribe(gs => {
+    this.guestService.getAssociatedGuests(this.route.snapshot.paramMap.get('id')).subscribe(gs => {
       this.guestsAssocies = gs;
     });
   }

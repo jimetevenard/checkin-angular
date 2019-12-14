@@ -13,6 +13,10 @@ export class GuestsService {
 
   private guests: Guest[] = [];
 
+  private listId: String;
+
+  private listFileName: String;
+
 /*
   TODO
   ====
@@ -20,7 +24,7 @@ export class GuestsService {
   Pas très propore mais bien pratique...
 */
 tmpGuestURL = 'http://checkin-back.jimetevenard.com/checkin.php';
-  
+
   fetchGuests(){
       return this.http.get(this.tmpGuestURL);
   }
@@ -32,7 +36,7 @@ tmpGuestURL = 'http://checkin-back.jimetevenard.com/checkin.php';
     return of(this.guests); // BOF BOF..
   }
 
-  getAssociatedGuests(id: number): Observable<Guest[]> {
+  getAssociatedGuests(id: string): Observable<Guest[]> {
     // on prend l'id comme critère et non le mail ou l'objet Guest
     // car il faut quelque chose qu'on puisse passer en URL
 
@@ -63,16 +67,17 @@ tmpGuestURL = 'http://checkin-back.jimetevenard.com/checkin.php';
     return this.guests.length > 0;
   }
 
-  private parseGuestArray(jsonArray: any){
-    let i = 0;
-    jsonArray.forEach(jsonGuest => {
-      this.guests.push(this.guestFromJson(jsonGuest,i));
-      i++;
+  private parseGuestArray(jsonData: any){   
+    this.listId = jsonData.id;
+    this.listFileName = jsonData.listFileName;
+    jsonData.guests.forEach(jsonGuest => {
+      this.guests.push(this.guestFromJson(jsonGuest));
     });
   }
 
-  private guestFromJson(jsonGuest: any, id: number) : Guest{
-    let g = new Guest(jsonGuest.nom, jsonGuest.prenom, jsonGuest.mail, id, 0);
+  private guestFromJson(jsonGuest: any) : Guest{
+    let fullId = this.listId + '-' + jsonGuest.id;
+    let g = new Guest(jsonGuest.nom, jsonGuest.prenom, jsonGuest.mail, fullId, 0);
 
     if((!g.isCheckedIn()) && this.checkinsService.isCheckedIn(g.id)){
       // i.e. if guest I has been stored as checked-in in local storage

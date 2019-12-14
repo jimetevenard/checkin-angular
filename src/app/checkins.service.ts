@@ -10,11 +10,11 @@ export class CheckinsService {
     this.storage = winRef.nativeWindow.localStorage;
   }
 
-  setCheckedIn(guestId: number){
+  setCheckedIn(guestId: string){
     this.storage.setItem(this.keyName(guestId),true);
   }
 
-  isCheckedIn(guestId: number): boolean {
+  isCheckedIn(guestId: string): boolean {
     let value = this.storage.getItem(this.keyName(guestId));
     return value == 'true';
   }
@@ -23,7 +23,7 @@ export class CheckinsService {
     for(let i = 0; i < this.storage.length; i++){
       let key = this.storage.key(i);
       if(this.isCheckinKey(key)){
-        this.storage.setItem(key,false);
+        this.storage.removeItem(key);
       }
     }
   }
@@ -43,7 +43,7 @@ export class CheckinsService {
     return count;
   }
 
-  private keyName(id: number): string{
+  private keyName(id: string): string{
     return PREFIX + id;
   }
   private isCheckinKey(key: string){

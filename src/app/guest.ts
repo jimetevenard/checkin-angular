@@ -2,7 +2,7 @@ export class Guest {
 
     
 
-    constructor(public nom: string, public prenom: string, public mail: string,public id: number,public checkins: number){
+    constructor(public nom: string, public prenom: string, public mail: string,public id: string,public checkins: number){
 
     }
 
