@@ -23,7 +23,7 @@ export class GuestsService {
 
   Pas très propore mais bien pratique...
 */
-tmpGuestURL = 'http://checkin-back.jimetevenard.com/checkin.php';
+tmpGuestURL = 'https://checkin-back.jimetevenard.com/checkin.php';
 
   fetchGuests(){
       return this.http.get(this.tmpGuestURL);
