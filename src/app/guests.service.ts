@@ -15,8 +15,6 @@ export class GuestsService {
 
   private listId: String;
 
-  private listFileName: String;
-
 /*
   TODO
   ====
@@ -69,7 +67,6 @@ tmpGuestURL = 'https://checkin-back.jimetevenard.com/checkin.php';
 
   private parseGuestArray(jsonData: any){   
     this.listId = jsonData.id;
-    this.listFileName = jsonData.listFileName;
     jsonData.guests.forEach(jsonGuest => {
       this.guests.push(this.guestFromJson(jsonGuest));
     });

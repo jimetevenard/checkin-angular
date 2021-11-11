@@ -4,14 +4,20 @@ import { WindowRefService } from './window-ref.service';
 @Injectable()
 export class CheckinsService {
 
+  /**
+   * Préfixes de clés utilisées pour stocker les check-in
+   * dans le localStorage.
+   */
+  private static readonly PREFIX = "checked-in-";
+
   private storage: any; // bof bof
 
   constructor(private winRef: WindowRefService) {
     this.storage = winRef.nativeWindow.localStorage;
   }
 
-  setCheckedIn(guestId: string){
-    this.storage.setItem(this.keyName(guestId),true);
+  setCheckedIn(guestId: string) {
+    this.storage.setItem(this.keyName(guestId), true);
   }
 
   isCheckedIn(guestId: string): boolean {
@@ -20,36 +26,23 @@ export class CheckinsService {
   }
 
   clearCheckins() {
-    for(let i = 0; i < this.storage.length; i++){
-      let key = this.storage.key(i);
-      if(this.isCheckinKey(key)){
+    Object.keys(this.storage).forEach((key) => {
+      if (this.isCheckinKey(key)) {
         this.storage.removeItem(key);
       }
-    }
+    });
   }
 
-  tmpCountCheckins(): number {
-    // Je le fais comme ça pour récupérer
-    // les checkins existants d'hier soir sur l'IPAD
-    // A l'avenir un simple attribut count:number dans cette classe fera le job
-
-    let count = 0;
-    for(let i = 0; i < this.storage.length; i++){
-      let key = this.storage.key(i);
-      if(this.isCheckinKey(key) && (this.storage.getItem(key) == 'true')){
-        count++;
-      }
-    }
-    return count;
+  countCheckins(): number {
+    return Object.keys(this.storage).filter((key) => this.isCheckinKey(key)).length;
   }
 
-  private keyName(id: string): string{
-    return PREFIX + id;
+  private keyName(id: string): string {
+    return CheckinsService.PREFIX + id;
   }
-  private isCheckinKey(key: string){
-    return key.startsWith(PREFIX);
+  private isCheckinKey(key: string) {
+    return key.startsWith(CheckinsService.PREFIX);
   }
 
 }
 
-const PREFIX = "checked-in-";

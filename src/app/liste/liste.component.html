@@ -16,7 +16,7 @@
       <button routerLink="/resa-plus/{{g.id}}" type="button" class="bouton-resa-dev btn-sm btn btn-info">+</button>
     </li>
     <li class="list-group-item">
-        {{checkinService.tmpCountCheckins()}} personnes checked-in sur un total de {{allGuests.length}} &nbsp;&nbsp;
+        {{checkinService.countCheckins()}} personnes checked-in sur un total de {{allGuests.length}} &nbsp;&nbsp;
     </li>
     <li class="list-group-item">
         <button routerLink="/reset" type="button" class="btn-sm btn btn-danger" >Réinitialiser les Check-ins</button>

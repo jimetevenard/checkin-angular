@@ -28,7 +28,7 @@ export class ListeComponent implements OnInit {
   }
   
 
-  constructor(private guestService: GuestsService, private checkinService: CheckinsService) { }
+  constructor(private guestService: GuestsService,public checkinService: CheckinsService) { }
 
   loadGuests(): void {
 
