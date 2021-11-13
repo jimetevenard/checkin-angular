@@ -4,6 +4,7 @@ import { GuestsService } from "../guests.service";
 
 import { FormsModule } from '@angular/forms'; 
 import { CheckinsService } from '../checkins.service';
+import { EnvironmentService } from '../environment.service';
 
 @Component({
   selector: 'app-liste',
@@ -14,6 +15,7 @@ export class ListeComponent implements OnInit {
 
   allGuests: Guest[];
   displayedGuestsList: Guest[];
+  backOfficeLink:string;
 
   @ViewChild('recherche') inputRecherche;
 
@@ -28,7 +30,11 @@ export class ListeComponent implements OnInit {
   }
   
 
-  constructor(private guestService: GuestsService,public checkinService: CheckinsService) { }
+  constructor(
+    private guestService: GuestsService,
+    private environmentService: EnvironmentService,
+    public checkinService: CheckinsService
+    ) { }
 
   loadGuests(): void {
 
@@ -42,6 +48,9 @@ export class ListeComponent implements OnInit {
   ngOnInit() {
 
     this.loadGuests();
+    this.environmentService.getEnvironmentConfig().subscribe(config => {
+      this.backOfficeLink = config.backofficeURL;
+    })
   }
 
   private correspond(recherche, elementListe): boolean {

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Guest } from "./guest";
 import { CheckinsService } from './checkins.service';
+import { EnvironmentService } from './environment.service';
 
 @Injectable()
 export class GuestsService {
@@ -15,16 +16,15 @@ export class GuestsService {
 
   private listId: String;
 
-/*
-  TODO
-  ====
-
-  Pas très propore mais bien pratique...
-*/
-tmpGuestURL = 'https://checkin-back.jimetevenard.com/checkin.php';
 
   fetchGuests(){
-      return this.http.get(this.tmpGuestURL);
+    return Observable.create((observer) => {
+      this.environmentService.getEnvironmentConfig().subscribe((config) => {
+        this.http.get(config.guestsResourceURL).subscribe((guestsData) => {
+          observer.next(guestsData);
+        });
+      })
+    });
   }
 
 
@@ -80,12 +80,14 @@ tmpGuestURL = 'https://checkin-back.jimetevenard.com/checkin.php';
       // i.e. if guest I has been stored as checked-in in local storage
       g.checkins++;
     }
-    console.log("Yes ! Created Guest who's name is "+g.nom);
     return g;
   }
 
 
-  constructor(private checkinsService: CheckinsService, private http: HttpClient) { 
+  constructor(
+    private checkinsService: CheckinsService,
+    private http: HttpClient,
+    private environmentService: EnvironmentService) { 
 
   }
 

@@ -12,6 +12,7 @@ import { ResaComplementComponent } from './resa-complement/resa-complement.compo
 import { CheckinsService } from './checkins.service';
 import { WindowRefService } from './window-ref.service';
 import { ResetCheckinsComponent } from './reset-checkins/reset-checkins.component';
+import { EnvironmentService } from './environment.service';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { ResetCheckinsComponent } from './reset-checkins/reset-checkins.componen
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ GuestsService, CheckinsService, WindowRefService],
+  providers: [ GuestsService, CheckinsService, WindowRefService, EnvironmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
