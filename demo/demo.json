@@ -1,0 +1,48 @@
+{
+    "id": 125463594348295,
+    "file": "test.xlsx",
+    "guests": [
+        {
+            "nom": "Benalla",
+            "prenom": "Alexandre ",
+            "mail": "m@4eb333665743ef41f4a9d7ee77407f54822cd2c2",
+            "id": 0
+        },
+        {
+            "nom": "Chirac",
+            "prenom": "Jacques",
+            "mail": "m@fc2488cf764a74b6f0347c20d4fffeac9ee5bad3",
+            "id": 1
+        },
+        {
+            "nom": "Gayet",
+            "prenom": "Julie",
+            "mail": "m@2c264e01cf6722ae7f173c4444c3ce78d0e2e5e1",
+            "id": 2
+        },
+        {
+            "nom": "Hollande",
+            "prenom": "François",
+            "mail": "m@2c264e01cf6722ae7f173c4444c3ce78d0e2e5e1",
+            "id": 3
+        },
+        {
+            "nom": "Macron",
+            "prenom": "Emmanuel",
+            "mail": "m@4eb333665743ef41f4a9d7ee77407f54822cd2c2",
+            "id": 4
+        },
+        {
+            "nom": "Mitterand",
+            "prenom": "François",
+            "mail": "m@4c0689b85f07848a747fc7d497eb18e54dbd8337",
+            "id": 5
+        },
+        {
+            "nom": "Sarko",
+            "prenom": "Nicolas ",
+            "mail": "m@4eb33366ababef41f4a9d7ee77407f54822cd2c2",
+            "id": 6
+        }
+    ]
+}

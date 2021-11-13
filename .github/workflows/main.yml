@@ -14,6 +14,7 @@ jobs:
           node-version: 8
       - run: npm ci
       - run: npm run build:demo
+      - run: mv ./demo/** .
       - run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npx gh-pages -d dist -u "github-actions-bot <noreply@jimetevenard.com>"
