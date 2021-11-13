@@ -10,6 +10,8 @@ Elle Permet :
 - D'afficher pour chaque invités les reservation associées (même adresse email)
 - De cocher les invités au fur et à mesure de leur arrivée. (cette information est stockée dans le localStorage et peut être réinitialisée depuis l'application)
 
+### Démo live : <https://jimetevenard.github.io/checkin-angular/>
+
 Cette application est conçue pour se connecter à une API backend.
 
 Le backend met à disposition les données de la liste au format json - Voir la classe [`Guest`](src/app/guest.ts).
