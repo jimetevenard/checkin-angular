@@ -1,4 +1,4 @@
 {
-    "guestsResourceURL": "http://localhost:3000/list",
-    "backofficeURL": "http://localhost:3000/"
+    "guestsResourceURL": "demo.json",
+    "backofficeURL": "#"
 }
