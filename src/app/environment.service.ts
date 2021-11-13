@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EnvironmentConfig } from './environment-config';
 
-const CONF_URL:string = '/config.json';
+const CONF_URL:string = 'config.json';
 
 @Injectable()
 export class EnvironmentService {
