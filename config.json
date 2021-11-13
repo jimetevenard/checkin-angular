@@ -1,4 +1,4 @@
 {
     "guestsResourceURL": "demo.json",
-    "backofficeURL": "#"
+    "backofficeURL": "backoffice.html"
 }
