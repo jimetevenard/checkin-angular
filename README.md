@@ -12,11 +12,12 @@ Elle Permet :
 
 ### Démo live : <https://jimetevenard.github.io/checkin-angular/>
 
-Cette application est conçue pour se connecter à une API backend.
+Cette application est conçue pour se connecter à une API backend.  
+*Une implémentation minimaliste en PHP est disponible ici : [checkin-back-php](https://github.com/jimetevenard/checkin-back-php/)*
 
 Le backend met à disposition les données de la liste au format json - Voir la classe [`Guest`](src/app/guest.ts).
 
-Le chargement de la liste depuis un fichier (excel...) est réalisé depuis le backoffice.
+Le chargement et le traitement de la liste depuis un fichier (excel...) est réalisé par le backoffice.
 
 ![capture d'écran](screenshot.jpg)
 > Hobby-project créé en 2018
