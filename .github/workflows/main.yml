@@ -14,7 +14,11 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm run build:demo
+      - run: ls -l
+      - run: ls -l ./dist/
       - run: mv ./demo/** ./dist/
+      - run: ls -l ./dist/
+      - run: cat ./dist/index.html
       - run: cp ./dist/index.html ./dist/404.html # Rewrite du pauvre pour Github Pages
       - run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
