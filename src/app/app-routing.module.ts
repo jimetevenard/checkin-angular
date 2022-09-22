@@ -9,7 +9,7 @@ const routes = [
   {path: 'liste', component: ListeComponent},
   {path: 'resa-plus/:id', component: ResaComplementComponent},
   {path: 'reset', component: ResetCheckinsComponent },
-  { path: '', redirectTo: '/liste', pathMatch: 'full' },
+  {path: '', redirectTo: '/liste', pathMatch: 'full' as const},
 ]
 
 @NgModule({
