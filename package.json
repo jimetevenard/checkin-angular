@@ -6,8 +6,8 @@
     "start": "npm-run-all -p start:test-server start:angular",
     "start:test-server": "node test-server/test-server.js",
     "start:angular": "ng serve",
-    "build": "ng build --prod",
-    "build:demo": "ng build --prod --base-href=/checkin-angular/ --deploy-url=/checkin-angular/",
+    "build": "ng build",
+    "build:demo": "ng build --base-href=/checkin-angular/ --deploy-url=/checkin-angular/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
