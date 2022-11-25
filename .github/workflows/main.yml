@@ -16,7 +16,8 @@ jobs:
       - run: npm run build:demo
       - run: mv ./demo/** ./dist/
       - run: cp ./dist/index.html ./dist/404.html # Rewrite du pauvre pour Github Pages
-      - run: |
+      - if: ${{ github.ref == 'ref/head/master' }}
+        run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npx gh-pages -d dist -u "github-actions-bot <noreply@jimetevenard.com>"
 
